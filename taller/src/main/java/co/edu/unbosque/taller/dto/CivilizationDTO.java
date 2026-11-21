@@ -1,9 +1,5 @@
 package co.edu.unbosque.taller.dto;
 
-/**
- * Civilización de Age of Empires II. Solo contiene los campos básicos que se
- * envían al front: id, name, expansion y army_type.
- */
 public class CivilizationDTO {
 
 	private Integer id;

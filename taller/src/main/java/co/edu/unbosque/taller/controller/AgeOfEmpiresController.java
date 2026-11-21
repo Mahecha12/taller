@@ -15,10 +15,7 @@ import co.edu.unbosque.taller.dto.CivilizationDTO;
 import co.edu.unbosque.taller.dto.UnitDTO;
 import co.edu.unbosque.taller.service.AgeOfEmpiresService;
 
-/**
- * Endpoints que exponen al front la información de la API de Age of Empires
- * II. Los {id} aceptan un número (1, 34) o un nombre (britons, teutonic_knight).
- */
+
 @RestController
 @RequestMapping("/aoe")
 @CrossOrigin(origins = { "http://localhost:8080", "http://localhost:8081" })

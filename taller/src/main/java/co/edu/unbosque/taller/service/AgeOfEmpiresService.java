@@ -23,7 +23,7 @@ public class AgeOfEmpiresService {
 	}
 
 	public CivilizationDTO getCivilizationById(String id) {
-		return ExternalHTTPRequestHandler.doGetAndConvertToDto(BASE_URL + "/civilization/" + validarId(id),
+		return ExternalHTTPRequestHandler.doGetAndConvertToDto(BASE_URL + "/civilization/" + id,
 				CivilizationDTO.class);
 	}
 
@@ -32,20 +32,10 @@ public class AgeOfEmpiresService {
 	}
 
 	public UnitDTO getUnitById(String id) {
-		return ExternalHTTPRequestHandler.doGetAndConvertToDto(BASE_URL + "/unit/" + validarId(id), UnitDTO.class);
+		return ExternalHTTPRequestHandler.doGetAndConvertToDto(BASE_URL + "/unit/" + id, UnitDTO.class);
 	}
 
-	/**
-	 * La API acepta un número (1, 34) o un nombre con guiones bajos
-	 * (britons, teutonic_knight). Un id con espacios u otros caracteres haría
-	 * fallar URI.create con un error 500, así que se responde 400.
-	 */
-	private String validarId(String id) {
-		if (id == null || !id.matches("[A-Za-z0-9_-]+")) {
-			throw new ExternalApiException(HttpStatus.BAD_REQUEST,
-					"El id debe ser un número o un nombre con letras, guiones o guiones bajos.");
-		}
-		return id;
-	}
+	
+	
 
 }
