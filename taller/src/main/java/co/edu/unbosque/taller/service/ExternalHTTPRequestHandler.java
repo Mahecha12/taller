@@ -7,7 +7,6 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
-
 public class ExternalHTTPRequestHandler {
 
 	private static final HttpClient CLIENTE_HTTP = HttpClient.newBuilder().version(HttpClient.Version.HTTP_2)
@@ -15,7 +14,7 @@ public class ExternalHTTPRequestHandler {
 
 	public static final String URL_PAISES = "https://api.countrystatecity.in/v1/countries";
 
-	private static final String API_KEY = System.getenv("COUNTRYSTATECITY_API_KEY");
+	private static final String API_KEY = "dfa13167a2555a681a139a0c3be6d1c8bd0ffe8e00407b5e256900000de87a18";
 
 	public static String obtenerJsonPaises() {
 		if (API_KEY == null || API_KEY.isBlank()) {
@@ -42,5 +41,4 @@ public class ExternalHTTPRequestHandler {
 		}
 	}
 
-	
 }
