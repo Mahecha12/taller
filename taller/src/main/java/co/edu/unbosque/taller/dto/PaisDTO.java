@@ -10,14 +10,13 @@ public class PaisDTO {
 	private String longitude;
 	private String region;
 	private String subregion;
-	private String currency_name;
 
 	public PaisDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public PaisDTO(long id, String name, int phonecode, String capital, String latitude, String longitude,
-			String region, String subRegion, String currency_name) {
+			String region, String subRegion) {
 		this.id = id;
 		this.name = name;
 		this.phonecode = phonecode;
@@ -26,7 +25,6 @@ public class PaisDTO {
 		this.longitude = longitude;
 		this.region = region;
 		this.subregion = subRegion;
-		this.currency_name = currency_name;
 	}
 
 	public long getId() {
@@ -93,19 +91,12 @@ public class PaisDTO {
 		this.subregion = subRegion;
 	}
 
-	public String getCurrency_name() {
-		return currency_name;
-	}
-
-	public void setCurrency_name(String currency_name) {
-		this.currency_name = currency_name;
-	}
 
 	@Override
 	public String toString() {
 		return "PaisDTO [id=" + id + ", name=" + name + ", phonecode=" + phonecode + ", capital=" + capital
 				+ ", latitude=" + latitude + ", longitude=" + longitude + ", region=" + region + ", subRegion="
-				+ subregion + ", currency_name=" + currency_name + "]";
+				+ subregion + "]";
 	}
 
 }

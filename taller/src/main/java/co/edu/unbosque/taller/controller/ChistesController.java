@@ -10,15 +10,15 @@ import co.edu.unbosque.taller.dto.ChisteDTO;
 import co.edu.unbosque.taller.service.ExternalHTTPRequestHandler;
 
 @RestController
-@RequestMapping("/api/chistes")
+@RequestMapping("/chistes")
 @CrossOrigin(origins = "*")
-public class ApiController {
+public class ChistesController {
+	
+	
 	@GetMapping("/aleatorio")
 	public ResponseEntity<ChisteDTO> obtenerChiste() {
-		String url = "https://v2.jokeapi.dev/joke/Any?lang=es";
-		
-		ChisteDTO chiste = ExternalHTTPRequestHandler.doGetAndConvertToDto(url);
-		
+		ChisteDTO chiste = ExternalHTTPRequestHandler.obtenerChisteAleatorio();
+
 		return ResponseEntity.status(chiste.getStatuscode()).body(chiste);
 	}
 

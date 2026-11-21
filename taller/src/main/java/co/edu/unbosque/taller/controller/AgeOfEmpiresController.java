@@ -2,7 +2,6 @@ package co.edu.unbosque.taller.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.unbosque.taller.dto.CivilizationDTO;
 import co.edu.unbosque.taller.dto.UnitDTO;
-import co.edu.unbosque.taller.service.AgeOfEmpiresService;
+import co.edu.unbosque.taller.service.ExternalHTTPRequestHandler;
 
 
 @RestController
@@ -21,16 +20,13 @@ import co.edu.unbosque.taller.service.AgeOfEmpiresService;
 @CrossOrigin(origins = { "http://localhost:8080", "http://localhost:8081" })
 public class AgeOfEmpiresController {
 
-	@Autowired
-	private AgeOfEmpiresService aoeServ;
-
 	public AgeOfEmpiresController() {
 	}
 
 
 	@GetMapping("/civilizations/getall")
 	ResponseEntity<List<CivilizationDTO>> getAllCivilizations() {
-		List<CivilizationDTO> civs = aoeServ.getAllCivilizations();
+		List<CivilizationDTO> civs = ExternalHTTPRequestHandler.getAllCivilizations();
 		if (civs.isEmpty()) {
 			return new ResponseEntity<>(civs, HttpStatus.NO_CONTENT);
 		} else {
@@ -40,13 +36,13 @@ public class AgeOfEmpiresController {
 
 	@GetMapping("/civilizations/getbyid/{id}")
 	ResponseEntity<CivilizationDTO> getCivilizationById(@PathVariable String id) {
-		return new ResponseEntity<>(aoeServ.getCivilizationById(id), HttpStatus.ACCEPTED);
+		return new ResponseEntity<>(ExternalHTTPRequestHandler.getCivilizationById(id), HttpStatus.ACCEPTED);
 	}
 
 
 	@GetMapping("/units/getall")
 	ResponseEntity<List<UnitDTO>> getAllUnits() {
-		List<UnitDTO> units = aoeServ.getAllUnits();
+		List<UnitDTO> units = ExternalHTTPRequestHandler.getAllUnits();
 		if (units.isEmpty()) {
 			return new ResponseEntity<>(units, HttpStatus.NO_CONTENT);
 		} else {
@@ -56,7 +52,7 @@ public class AgeOfEmpiresController {
 
 	@GetMapping("/units/getbyid/{id}")
 	ResponseEntity<UnitDTO> getUnitById(@PathVariable String id) {
-		return new ResponseEntity<>(aoeServ.getUnitById(id), HttpStatus.ACCEPTED);
+		return new ResponseEntity<>(ExternalHTTPRequestHandler.getUnitById(id), HttpStatus.ACCEPTED);
 	}
 
 }
